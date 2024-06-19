@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: nginxwebserver
+  name: nginxwebservers
 spec: 
   containers: 
   - image: nginx

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sjclabs-deployments
+  labels:
+    app: guestbook     #this label is for replica set
+    tier: frontend
+spec:
+  # modify replicas according to your case
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:       #the labels tier=frontend id for pods
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx-sjc
+        image: nginx

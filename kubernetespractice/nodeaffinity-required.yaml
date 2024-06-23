@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8slabs-nodeaffinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+            - key: disk  
+              operator: In #NotIn  #pod is placed in a node where disk=ssd
+              values:      #if we use NotIn in the place of In pod is placed in a different node 
+              - ssd        #where node dont have a label of disk=ssd
+  containers:
+  - name: with-node-affinity
+    image: nginx
+
+
+
+

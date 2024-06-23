@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8slabs-nodeaffinity
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+        - matchExpressions:
+          - key: memory
+            operator: In
+            values:
+            - high
+            - medium
+  containers:
+  - name: k8slabs-node-affinity-prefeerd
+    image: nginx
+
+
+
+
